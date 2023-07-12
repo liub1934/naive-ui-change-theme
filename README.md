@@ -1,5 +1,7 @@
 # Naive UI 动态自定义换肤实现
 
+具体说明参考：<https://liubing.me/article/vue/naive-ui/naive-ui-custom-theme.html>
+
 ## Project Setup
 
 ```sh
