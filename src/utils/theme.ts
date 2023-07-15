@@ -195,14 +195,14 @@ export function addCssVarsToHtml(
 
   for (const [key, value] of themeColorsEntries) {
     const { r, g, b } = getRGBColor(value)
-    configCssObj[`--${kebabCase(key)}`] = `${r},${g},${b}`
+    configCssObj[`--n-${kebabCase(key)}`] = `${r},${g},${b}`
   }
 
   for (const [key, value] of configEntries) {
     const generateColors = getGenerateColors(value, darkMode)
     generateColors.map((color, index) => {
       const { r, g, b } = getRGBColor(color)
-      configCssObj[`--${key}-color-${index + 1}`] = `${r},${g},${b}`
+      configCssObj[`--n-${key}-color-${index + 1}`] = `${r},${g},${b}`
     })
   }
 

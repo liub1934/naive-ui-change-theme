@@ -92,6 +92,182 @@
             style="top: 85px"
           >
             <n-space>
+              <div class="custom-color-1">class自己定义颜色</div>
+              <div class="custom-color-2">class自己定义颜色</div>
+              <div class="custom-color-3">class自己定义颜色 透明度50%</div>
+            </n-space>
+            <n-divider />
+            <n-space>
+              <div class="text-primary">Primary Color</div>
+              <div class="text-primary text-opacity-50">
+                Primary Color 透明度50%
+              </div>
+              <div class="text-primary-1">Primary Color1</div>
+              <div class="text-primary-2">Primary Color2</div>
+              <div class="text-primary-3">Primary Color3</div>
+              <div class="text-primary-4">Primary Color4</div>
+              <div class="text-primary-5">Primary Color5</div>
+              <div class="text-primary-6">Primary Color6</div>
+              <div class="text-primary-7">Primary Color7</div>
+              <div class="text-primary-8">Primary Color8</div>
+              <div class="text-primary-9">Primary Color9</div>
+              <div class="text-primary-10">Primary Color10</div>
+            </n-space>
+            <n-divider />
+            <n-space>
+              <div class="bg-primary">Primary Color</div>
+              <div class="bg-primary color-opacity-50">
+                Primary Color 透明度50%
+              </div>
+              <div class="bg-primary-1">Primary Color1</div>
+              <div class="bg-primary-2">Primary Color2</div>
+              <div class="bg-primary-3">Primary Color3</div>
+              <div class="bg-primary-4">Primary Color4</div>
+              <div class="bg-primary-5">Primary Color5</div>
+              <div class="bg-primary-6">Primary Color6</div>
+              <div class="bg-primary-7">Primary Color7</div>
+              <div class="bg-primary-8">Primary Color8</div>
+              <div class="bg-primary-9">Primary Color9</div>
+              <div class="bg-primary-10">Primary Color10</div>
+            </n-space>
+            <n-divider />
+            <n-space>
+              <div class="text-info">Info Color</div>
+              <div class="text-info text-opacity-50">Info Color 透明度50%</div>
+              <div class="text-info-1">Info Color1</div>
+              <div class="text-info-2">Info Color2</div>
+              <div class="text-info-3">Info Color3</div>
+              <div class="text-info-4">Info Color4</div>
+              <div class="text-info-5">Info Color5</div>
+              <div class="text-info-6">Info Color6</div>
+              <div class="text-info-7">Info Color7</div>
+              <div class="text-info-8">Info Color8</div>
+              <div class="text-info-9">Info Color9</div>
+              <div class="text-info-10">Info Color10</div>
+            </n-space>
+            <n-divider />
+            <n-space>
+              <div class="bg-info">Info Color</div>
+              <div class="bg-info color-opacity-50">Info Color 透明度50%</div>
+              <div class="bg-info-1">Info Color1</div>
+              <div class="bg-info-2">Info Color2</div>
+              <div class="bg-info-3">Info Color3</div>
+              <div class="bg-info-4">Info Color4</div>
+              <div class="bg-info-5">Info Color5</div>
+              <div class="bg-info-6">Info Color6</div>
+              <div class="bg-info-7">Info Color7</div>
+              <div class="bg-info-8">Info Color8</div>
+              <div class="bg-info-9">Info Color9</div>
+              <div class="bg-info-10">Info Color10</div>
+            </n-space>
+            <n-divider />
+
+            <n-space>
+              <div class="text-success">Success Color</div>
+              <div class="text-success text-opacity-50">
+                Success Color 透明度50%
+              </div>
+              <div class="text-success-1">Success Color1</div>
+              <div class="text-success-2">Success Color2</div>
+              <div class="text-success-3">Success Color3</div>
+              <div class="text-success-4">Success Color4</div>
+              <div class="text-success-5">Success Color5</div>
+              <div class="text-success-6">Success Color6</div>
+              <div class="text-success-7">Success Color7</div>
+              <div class="text-success-8">Success Color8</div>
+              <div class="text-success-9">Success Color9</div>
+              <div class="text-success-10">Success Color10</div>
+            </n-space>
+            <n-divider />
+            <n-space>
+              <div class="bg-success">Success Color</div>
+              <div class="bg-success color-opacity-50">
+                Success Color 透明度50%
+              </div>
+              <div class="bg-success-1">Success Color1</div>
+              <div class="bg-success-2">Success Color2</div>
+              <div class="bg-success-3">Success Color3</div>
+              <div class="bg-success-4">Success Color4</div>
+              <div class="bg-success-5">Success Color5</div>
+              <div class="bg-success-6">Success Color6</div>
+              <div class="bg-success-7">Success Color7</div>
+              <div class="bg-success-8">Success Color8</div>
+              <div class="bg-success-9">Success Color9</div>
+              <div class="bg-success-10">Success Color10</div>
+            </n-space>
+            <n-divider />
+
+            <n-space>
+              <div class="text-warning">Warning Color</div>
+              <div class="text-warning text-opacity-50">
+                Warning Color 透明度50%
+              </div>
+              <div class="text-warning-1">Warning Color1</div>
+              <div class="text-warning-2">Warning Color2</div>
+              <div class="text-warning-3">Warning Color3</div>
+              <div class="text-warning-4">Warning Color4</div>
+              <div class="text-warning-5">Warning Color5</div>
+              <div class="text-warning-6">Warning Color6</div>
+              <div class="text-warning-7">Warning Color7</div>
+              <div class="text-warning-8">Warning Color8</div>
+              <div class="text-warning-9">Warning Color9</div>
+              <div class="text-warning-10">Warning Color10</div>
+            </n-space>
+            <n-divider />
+            <n-space>
+              <div class="bg-warning">Warning Color</div>
+              <div class="bg-warning color-opacity-50">
+                Warning Color 透明度50%
+              </div>
+              <div class="bg-warning-1">Warning Color1</div>
+              <div class="bg-warning-2">Warning Color2</div>
+              <div class="bg-warning-3">Warning Color3</div>
+              <div class="bg-warning-4">Warning Color4</div>
+              <div class="bg-warning-5">Warning Color5</div>
+              <div class="bg-warning-6">Warning Color6</div>
+              <div class="bg-warning-7">Warning Color7</div>
+              <div class="bg-warning-8">Warning Color8</div>
+              <div class="bg-warning-9">Warning Color9</div>
+              <div class="bg-warning-10">Warning Color10</div>
+            </n-space>
+            <n-divider />
+
+            <n-space>
+              <div class="text-error">Error Color</div>
+              <div class="text-error text-opacity-50">
+                Error Color 透明度50%
+              </div>
+              <div class="text-error-1">Error Color1</div>
+              <div class="text-error-2">Error Color2</div>
+              <div class="text-error-3">Error Color3</div>
+              <div class="text-error-4">Error Color4</div>
+              <div class="text-error-5">Error Color5</div>
+              <div class="text-error-6">Error Color6</div>
+              <div class="text-error-7">Error Color7</div>
+              <div class="text-error-8">Error Color8</div>
+              <div class="text-error-9">Error Color9</div>
+              <div class="text-error-10">Error Color10</div>
+            </n-space>
+            <n-divider />
+            <n-space>
+              <div class="bg-error">Error Color</div>
+              <div class="bg-warning color-opacity-50">
+                Error Color 透明度50%
+              </div>
+              <div class="bg-error-1">Error Color1</div>
+              <div class="bg-error-2">Error Color2</div>
+              <div class="bg-error-3">Error Color3</div>
+              <div class="bg-error-4">Error Color4</div>
+              <div class="bg-error-5">Error Color5</div>
+              <div class="bg-error-6">Error Color6</div>
+              <div class="bg-error-7">Error Color7</div>
+              <div class="bg-error-8">Error Color8</div>
+              <div class="bg-error-9">Error Color9</div>
+              <div class="bg-error-10">Error Color10</div>
+            </n-space>
+            <n-divider />
+
+            <n-space>
               <n-button>Default</n-button>
               <n-button type="tertiary"> Tertiary </n-button>
               <n-button type="primary"> Primary </n-button>
@@ -314,3 +490,15 @@ function renderIcon(icon: Component) {
   return () => h(NIcon, null, { default: () => h(icon) })
 }
 </script>
+
+<style>
+.custom-color-1 {
+  color: rgb(var(--n-primary-color));
+}
+.custom-color-2 {
+  background: rgb(var(--n-warning-color));
+}
+.custom-color-3 {
+  background: rgba(var(--n-info-color), 0.5);
+}
+</style>
