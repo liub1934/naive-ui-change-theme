@@ -64,12 +64,18 @@
                     href="https://github.com/liub1934/naive-ui-change-theme"
                     target="_blank"
                   >
-                    <n-button>
-                      <n-icon>
-                        <logo-github />
-                      </n-icon>
-                    </n-button>
+                    <n-tooltip trigger="hover" placement="left">
+                      <template #trigger>
+                        <n-button>
+                          <n-icon>
+                            <logo-github />
+                          </n-icon>
+                        </n-button>
+                      </template>
+                      <span>查看源码</span>
+                    </n-tooltip>
                   </a>
+
                   <n-button @click="themeStore.toggleDarkMode">
                     <template #icon>
                       <n-icon>

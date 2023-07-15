@@ -5,15 +5,25 @@ import { darkTheme } from 'naive-ui'
 import { useColorMode, useCycleList, type BasicColorSchema } from '@vueuse/core'
 
 export const useThemeStore = defineStore('theme', () => {
+  /** 默认模式，一般设置为auto跟随系统 */
+  const defaultMode = ref<BasicColorSchema>('auto')
+  /** 模式列表 */
+  const modeList = ref<BasicColorSchema[]>(['dark', 'light', 'auto'])
+
   const colorMode = useColorMode({
+    initialValue: defaultMode.value,
     emitAuto: true
   })
-  const { state, next } = useCycleList(['dark', 'light', 'auto'], {
+  const { state, next } = useCycleList(modeList, {
     initialValue: colorMode
   })
   watch(
     state,
     () => {
+      if (!modeList.value.includes(state.value)) {
+        // 如果不在modeList里面，就设置成默认的
+        state.value = defaultMode.value
+      }
       colorMode.value = state.value as BasicColorSchema
     },
     { immediate: true }
