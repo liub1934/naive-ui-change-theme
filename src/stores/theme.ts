@@ -1,6 +1,6 @@
 import { ref, computed, watch } from 'vue'
 import { defineStore } from 'pinia'
-import { getThemeOverrides, type ThemeConfig } from './utils'
+import { getThemeOverrides, type ThemeConfig } from '@/utils/theme'
 import { darkTheme } from 'naive-ui'
 import { useColorMode, useCycleList, type BasicColorSchema } from '@vueuse/core'
 
