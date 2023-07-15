@@ -1,4 +1,6 @@
 import { generate } from '@ant-design/colors'
+import { colord } from 'colord'
+import { upperFirst, kebabCase } from 'lodash-es'
 import { type GlobalThemeOverrides, commonDark, commonLight } from 'naive-ui'
 
 export type ColorType = 'primary' | 'info' | 'success' | 'warning' | 'error'
@@ -12,20 +14,17 @@ export type ButtonThemeColor = Partial<Record<ColorKey, string>>
 export type ThemeConfig = {
   [key in ColorType]?: string
 }
+export type CssObject = {
+  [key: string]: string
+}
 
 export interface ColorAction {
   scene: ColorScene
   handler: (color: string) => string
 }
 
-/**
- * 首字母大写
- *
- * @param {ColorType} str "primary" | "info" | "success" | "warning" | "error"
- * @return {ColorTypeCase} "Primary" | "Info" | "Success" | "Warning" | "Error"
- */
-function capitalCase(str: ColorType): ColorTypeCase {
-  return (str.charAt(0).toUpperCase() + str.slice(1)) as ColorTypeCase
+function getRGBColor(color: string) {
+  return colord(color).toRgb()
 }
 
 /**
@@ -81,7 +80,7 @@ function getOtherColor(
   ]
   keys.forEach((key) => {
     scenes.forEach((scene) => {
-      const colorKey = `textColor${scene}${capitalCase(key)}` as ButtonColorKey
+      const colorKey = `textColor${scene}${upperFirst(key)}` as ButtonColorKey
       otherColor.Button![colorKey] = getTextColor(darkMode)
     })
   })
@@ -148,10 +147,71 @@ export function getThemeOverrides(
   darkMode: boolean
 ): GlobalThemeOverrides {
   const themeColors = getThemeColors(config, darkMode)
+  addCssVarsToHtml(config, darkMode, themeColors)
   return {
     common: {
       ...themeColors
     },
     ...getOtherColor(config, darkMode)
   }
+}
+
+/**
+ * 将CSS文本解析为CSS对象
+ *
+ * @param {string} cssText "--primary-color1: 211,224,215;--primary-color2: 167,212,182;"
+ * @return {CssObject} { --primary-color1: '211,224,215', --primary-color2: '167,212,182' }
+ */
+export function parseCssText(cssText: string): CssObject {
+  const cssObj: CssObject = {}
+  cssText.split(';').forEach((rule) => {
+    if (rule) {
+      const [key, value] = rule.split(':')
+      cssObj[key.trim()] = value.trim()
+    }
+  })
+  return cssObj
+}
+
+/**
+ * 将CSS变量添加到HTML文档中
+ *
+ * @param {ThemeConfig} config - store themeConfig
+ * @param {boolean} darkMode - 暗黑模式
+ * @param {ThemeColor} themeColors - getThemeColors返回的颜色列表
+ * @return {void}
+ */
+export function addCssVarsToHtml(
+  config: ThemeConfig,
+  darkMode: boolean,
+  themeColors: ThemeColor
+): void {
+  const $root: HTMLElement = document.documentElement
+  const cssText = $root.style.cssText
+  const cssObj = parseCssText(cssText)
+  const configCssObj: CssObject = {}
+  const configEntries = Object.entries(config) as [ColorType, string][]
+  const themeColorsEntries = Object.entries(themeColors) as [ColorKey, string][]
+
+  for (const [key, value] of themeColorsEntries) {
+    const { r, g, b } = getRGBColor(value)
+    configCssObj[`--${kebabCase(key)}`] = `${r},${g},${b}`
+  }
+
+  for (const [key, value] of configEntries) {
+    const generateColors = getGenerateColors(value, darkMode)
+    generateColors.map((color, index) => {
+      const { r, g, b } = getRGBColor(color)
+      configCssObj[`--${key}-color-${index + 1}`] = `${r},${g},${b}`
+    })
+  }
+
+  const newCssText = Object.entries({
+    ...cssObj,
+    ...configCssObj
+  })
+    .map(([key, value]) => `${key}: ${value};`)
+    .join(' ')
+
+  $root.style.cssText = newCssText
 }

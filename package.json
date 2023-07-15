@@ -15,6 +15,8 @@
     "@ant-design/colors": "^7.0.0",
     "@vicons/ionicons5": "^0.12.0",
     "@vueuse/core": "^10.2.1",
+    "colord": "^2.9.3",
+    "lodash-es": "^4.17.21",
     "naive-ui": "^2.34.4",
     "pinia": "^2.0.36",
     "unplugin-vue-components": "^0.25.1",
@@ -23,6 +25,7 @@
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.2.0",
     "@tsconfig/node18": "^2.0.1",
+    "@types/lodash-es": "^4.17.8",
     "@types/node": "^18.16.8",
     "@vitejs/plugin-vue": "^4.2.3",
     "@vitejs/plugin-vue-jsx": "^3.0.1",
