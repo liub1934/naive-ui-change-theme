@@ -16,7 +16,7 @@ function generateColorCombinations(): Record<string, string> {
   }
   return result
 }
-console.log(generateColorCombinations())
+
 export default defineConfig({
   presets: [presetUno()],
   theme: {
