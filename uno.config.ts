@@ -1,32 +1,32 @@
 import { defineConfig } from 'unocss'
 import presetUno from '@unocss/preset-uno'
 
-const colorNameReg =
-  /^(color|bg|bg-color|border)-(primary|info|success|warning|error)(-(hover|pressed|focus|disabled|[1-9]|10))?$/
-
-const colorNameMap = {
-  bg: 'background',
-  border: 'border-color',
-  'bg-color': 'background-color'
+function generateColorCombinations(): Record<string, string> {
+  const colorTypes = ['primary', 'info', 'success', 'warning', 'error']
+  const colorScenes = ['hover', 'pressed', 'focus', 'disabled']
+  const result: Record<string, string> = {}
+  for (const type of colorTypes) {
+    result[type] = `rgba(var(--n-${type}-color))`
+    for (let i = 1; i <= 10; i++) {
+      result[`${type}-${i}`] = `rgba(var(--n-${type}-color-${i}))`
+    }
+    for (const scene of colorScenes) {
+      result[`${type}-${scene}`] = `rgba(var(--n-${type}-color-${scene}))`
+    }
+  }
+  return result
 }
-
+console.log(generateColorCombinations())
 export default defineConfig({
   presets: [presetUno()],
-  rules: [
-    /**
-     * color-primary => color: rgb(var(--n-primary-color))
-     * color-primary-hover => color: rgb(var(--n-primary-color-hover))
-     * bg-primary => background: rgb(var(--n-primary-color))
-     * bg-primary-hover => background: rgb(var(--n-primary-color-hover))
-     * bg-color-primary => background-color: rgb(var(--n-primary-color))
-     */
-    [
-      colorNameReg,
-      ([_, type, color, state]) => ({
-        [colorNameMap[type] || type]: `rgba(var(--n-${color}-color${
-          state || ''
-        }), var(--un-text-opacity, 1))`
-      })
-    ]
-  ]
+  theme: {
+    colors: {
+      // 生成如下颜色数据
+      // 'primary': 'rgba(var(--n-primary-color))'
+      // 'primary-1': 'rgba(var(--n-primary-color-1))',
+      // 'primary-hover': 'rgba(var(--n-primary-color-hover))',
+      // ...其他
+      ...generateColorCombinations()
+    }
+  }
 })
