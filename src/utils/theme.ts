@@ -2,24 +2,19 @@ import { generate } from '@ant-design/colors'
 import { colord } from 'colord'
 import { upperFirst, kebabCase } from 'lodash-es'
 import { type GlobalThemeOverrides, commonDark, commonLight } from 'naive-ui'
-
-export type ColorType = 'primary' | 'info' | 'success' | 'warning' | 'error'
-export type ColorTypeCase = 'Primary' | 'Info' | 'Success' | 'Warning' | 'Error'
-export type ColorScene = '' | 'Suppl' | 'Hover' | 'Pressed'
-export type ButtonColorScene = '' | 'Hover' | 'Pressed' | 'Focus' | 'Disabled'
-export type ColorKey = `${ColorType}Color${ColorScene}`
-export type ButtonColorKey = `textColor${ButtonColorScene}${ColorTypeCase}`
-export type ThemeColor = Partial<Record<ColorKey, string>>
-export type ButtonThemeColor = Partial<Record<ColorKey, string>>
-export type ThemeConfig = {
-  [key in ColorType]?: string
+type ColorKey = `${NTheme.ColorType}Color${NTheme.ColorSceneCase}`
+type ButtonColorKey =
+  `textColor${NTheme.ButtonColorSceneCase}${NTheme.ColorTypeCase}`
+type ThemeColor = Partial<Record<ColorKey, string>>
+type ThemeConfig = {
+  [key in NTheme.ColorType]?: string
 }
-export type CssObject = {
+type CssObject = {
   [key: string]: string
 }
 
-export interface ColorAction {
-  scene: ColorScene
+interface ColorAction {
+  scene: NTheme.ColorSceneCase
   handler: (color: string) => string
 }
 
@@ -70,8 +65,8 @@ function getOtherColor(
       buttonColor: getTextColor(darkMode)
     }
   }
-  const keys = Object.keys(config) as ColorType[]
-  const scenes: ButtonColorScene[] = [
+  const keys = Object.keys(config) as NTheme.ColorType[]
+  const scenes: NTheme.ButtonColorSceneCase[] = [
     '',
     'Hover',
     'Pressed',
@@ -99,7 +94,7 @@ export function getThemeColors(
   darkMode: boolean
 ): ThemeColor {
   const themeColor: ThemeColor = {}
-  const keys = Object.keys(config) as ColorType[]
+  const keys = Object.keys(config) as NTheme.ColorType[]
   const colorActions: ColorAction[] = [
     { scene: '', handler: (color) => getGenerateColors(color, darkMode)[5] },
     {
@@ -190,7 +185,7 @@ export function addCssVarsToHtml(
   const cssText = $root.style.cssText
   const cssObj = parseCssText(cssText)
   const configCssObj: CssObject = {}
-  const configEntries = Object.entries(config) as [ColorType, string][]
+  const configEntries = Object.entries(config) as [NTheme.ColorType, string][]
   const themeColorsEntries = Object.entries(themeColors) as [ColorKey, string][]
 
   for (const [key, value] of themeColorsEntries) {
