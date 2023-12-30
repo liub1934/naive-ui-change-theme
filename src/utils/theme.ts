@@ -6,9 +6,6 @@ type ColorKey = `${NTheme.ColorType}Color${NTheme.ColorSceneCase}`
 type ButtonColorKey =
   `textColor${NTheme.ButtonColorSceneCase}${NTheme.ColorTypeCase}`
 type ThemeColor = Partial<Record<ColorKey, string>>
-type ThemeConfig = {
-  [key in NTheme.ColorType]?: string
-}
 type CssObject = {
   [key: string]: string
 }
@@ -42,12 +39,12 @@ function getGenerateColors(color: string, darkMode: boolean): string[] {
  * 获取其他组件颜色，主要用于适配暗色下文字颜色，该方法可以按需取舍
  *
  * @desc 比如暗黑模式下Primary按钮文字、Checkbox勾号默认都是黑色的，所以需要特殊处理变成白色,可能会有遗漏，需要的话按需补充
- * @param {ThemeConfig} config store themeConfig
+ * @param {NTheme.Config} config store themeConfig
  * @param {boolean} darkMode 暗黑模式
  * @return {GlobalThemeOverrides}
  */
 function getOtherColor(
-  config: ThemeConfig,
+  config: NTheme.Config,
   darkMode: boolean
 ): GlobalThemeOverrides {
   const otherColor: GlobalThemeOverrides = {
@@ -85,12 +82,12 @@ function getOtherColor(
 /**
  * 获取主题颜色
  *
- * @param {ThemeConfig} config store themeConfig
+ * @param {NTheme.Config} config store themeConfig
  * @param {boolean} darkMode 暗黑模式
  * @return {ThemeColor}
  */
 export function getThemeColors(
-  config: ThemeConfig,
+  config: NTheme.Config,
   darkMode: boolean
 ): ThemeColor {
   const themeColor: ThemeColor = {}
@@ -133,12 +130,12 @@ function getTextColor(darkMode: boolean): string {
 /**
  * 获取动态主题ThemeOverrides
  *
- * @param {ThemeConfig} config store themeConfig
+ * @param {NTheme.Config} config store themeConfig
  * @param {boolean} darkMode 暗黑模式
  * @return {GlobalThemeOverrides}
  */
 export function getThemeOverrides(
-  config: ThemeConfig,
+  config: NTheme.Config,
   darkMode: boolean
 ): GlobalThemeOverrides {
   const themeColors = getThemeColors(config, darkMode)
@@ -171,13 +168,13 @@ export function parseCssText(cssText: string): CssObject {
 /**
  * 将CSS变量添加到HTML文档中
  *
- * @param {ThemeConfig} config - store themeConfig
+ * @param {NTheme.Config} config - store themeConfig
  * @param {boolean} darkMode - 暗黑模式
  * @param {ThemeColor} themeColors - getThemeColors返回的颜色列表
  * @return {void}
  */
 export function addCssVarsToHtml(
-  config: ThemeConfig,
+  config: NTheme.Config,
   darkMode: boolean,
   themeColors: ThemeColor
 ): void {

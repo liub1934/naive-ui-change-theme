@@ -1,6 +1,6 @@
 import { ref, computed, watch } from 'vue'
 import { defineStore } from 'pinia'
-import { getThemeOverrides, type ThemeConfig } from '@/utils/theme'
+import { getThemeOverrides } from '@/utils/theme'
 import { darkTheme } from 'naive-ui'
 import { useColorMode, useCycleList, type BasicColorSchema } from '@vueuse/core'
 
@@ -39,7 +39,7 @@ export const useThemeStore = defineStore('theme', () => {
   })
 
   /** 主题配置 */
-  const themeConfig = ref<ThemeConfig>({
+  const themeConfig = ref<NTheme.Config>({
     primary: '#18a058',
     info: '#2080f0',
     success: '#18a058',
@@ -61,7 +61,7 @@ export const useThemeStore = defineStore('theme', () => {
   }
 
   /** 手动设置主题 */
-  function setThemeConfig(config: ThemeConfig) {
+  function setThemeConfig(config: NTheme.Config) {
     themeConfig.value = {
       ...themeConfig.value,
       ...config

@@ -13,4 +13,8 @@ declare namespace NTheme {
   type ButtonColorScene = '' | 'hover' | 'pressed' | 'focus' | 'disabled'
   /** 按钮颜色场景大写值 */
   type ButtonColorSceneCase = '' | 'Hover' | 'Pressed' | 'Focus' | 'Disabled'
+  // 主题配置
+  type Config = {
+    [key in NTheme.ColorType]?: string
+  }
 }
