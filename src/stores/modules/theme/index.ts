@@ -1,6 +1,6 @@
 import { ref, computed, watch } from 'vue'
 import { defineStore } from 'pinia'
-import { getThemeOverrides } from '@/utils/theme'
+import { getThemeOverrides, getGenerateColors } from './helper'
 import { darkTheme } from 'naive-ui'
 import { useColorMode, useCycleList, type BasicColorSchema } from '@vueuse/core'
 
@@ -40,11 +40,11 @@ export const useThemeStore = defineStore('theme', () => {
 
   /** 主题配置 */
   const themeConfig = ref<NTheme.Config>({
-    primary: '#18a058',
-    info: '#2080f0',
-    success: '#18a058',
-    warning: '#f0a020',
-    error: '#d03050'
+    primary: '#1677ff',
+    info: '#722ed1',
+    success: '#52c41a',
+    warning: '#faad14',
+    error: '#f5222d'
   })
 
   /** 主题 */
@@ -53,6 +53,19 @@ export const useThemeStore = defineStore('theme', () => {
   /** 主题theme-overrides */
   const themeOverrides = computed(() => {
     return getThemeOverrides(themeConfig.value, darkMode.value)
+  })
+
+  /** 主题颜色 */
+  const themeColors = computed(() => {
+    const entries = Object.entries(themeConfig.value) as [
+      NTheme.ColorType,
+      string
+    ][]
+    const colors = {} as Record<NTheme.ColorType, string[]>
+    entries.forEach(([key, value]) => {
+      colors[key] = getGenerateColors(value, darkMode.value)
+    })
+    return colors
   })
 
   /** 暗黑模式切换 */
@@ -73,6 +86,7 @@ export const useThemeStore = defineStore('theme', () => {
     themeConfig,
     theme,
     themeOverrides,
+    themeColors,
     modeState: state,
     toggleDarkMode,
     setThemeConfig

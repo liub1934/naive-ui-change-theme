@@ -1,10 +1,19 @@
 import 'virtual:uno.css'
-import { createApp } from 'vue'
-import { createPinia } from 'pinia'
 import App from './App.vue'
+import { createApp } from 'vue'
+import { setupStore } from '@/stores'
+import { setupNaiveDiscreteApi } from '@/plugins'
 
-const app = createApp(App)
+async function bootstrap() {
+  const app = createApp(App)
+  // 挂载状态管理
+  setupStore(app)
+  // 挂载 naive-ui 脱离上下文的 Api
+  setTimeout(() => {
+    setupNaiveDiscreteApi()
+  })
 
-app.use(createPinia())
+  app.mount('#app', true)
+}
 
-app.mount('#app')
+void bootstrap()

@@ -26,7 +26,7 @@ function getRGBColor(color: string) {
  * @param {boolean} darkMode 暗黑模式
  * @return {string[]} ['#E6F7FF', '#BAE7FF', '#91D5FF', ''#69C0FF', '#40A9FF', '#1890FF', '#096DD9', '#0050B3', '#003A8C', '#002766']
  */
-function getGenerateColors(color: string, darkMode: boolean): string[] {
+export function getGenerateColors(color: string, darkMode: boolean): string[] {
   return darkMode
     ? generate(color, {
         theme: 'dark',
